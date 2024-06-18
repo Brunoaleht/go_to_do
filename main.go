@@ -21,8 +21,9 @@ func main() {
 	router.Post("/", handlers.Create)
 	router.Patch("/{id}", handlers.Updated)
 	router.Delete("/{id}", handlers.Delete)
-	router.Get("/{id}", handlers.Get)
 	router.Get("/", handlers.Paginate)
+	router.Get("/{id}", handlers.Get)
+	
 
 	http.ListenAndServe(fmt.Sprintf(": %s", configs.GetServerPort()), router)
 
