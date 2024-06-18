@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"modules/configs"
 	"modules/handlers"
 	"net/http"
@@ -12,6 +13,7 @@ import (
 func main() {
 	err := configs.LoadConfig()
 	if err != nil {
+		log.Printf("Error LoadConfig: %v", err)
 		panic(err)
 	}
 
@@ -22,6 +24,6 @@ func main() {
 	router.Get("/{id}", handlers.Get)
 	router.Get("/", handlers.Paginate)
 
-	http.ListenAndServe(fmt.Sprintf("Port: %s", configs.GetServerPort()), router)
+	http.ListenAndServe(fmt.Sprintf(": %s", configs.GetServerPort()), router)
 
 }
